@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Programming | SkillDzire</title>
+<style>
+  :root
+{
+    --navy:#10243f;
+    --blue:#1769aa;
+    --orange:#f28a35;
+    --ink:#202b3c;
+    --muted:#667085;
+    --line:#e6eaf0;
+    --pale:#f5f8fc
+}
+*
+{
+    box-sizing:border-box
+}
+html
+{
+    scroll-behavior:smooth
+}
+body
+{
+    margin:0;font-family:Arial,Helvetica,sans-serif;
+    color:var(--ink);line-height:1.6;background:#fff
+}
+.container
+{
+    width:min(1120px,calc(100% - 40px));
+    margin:auto
+}
+.top
+{
+    background:#0b1b30;color:#d9e4f0;
+    font-size:12px;padding:8px 0
+}
+.top .container
+{
+    display:flex;
+    justify-content:space-between
+}
+header
+{
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:5
+}
+.nav
+{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between
+}
+.logo
+{
+    font-size:23px;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:-.5px
+}
+.logo b
+{
+    color:var(--orange)
+}
+nav a
+{
+    margin-left:27px;
+    color:#475467;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600
+}
+nav a:hover
+{
+    color:var(--blue)
+}
+.hero
+{
+    position:relative;
+    overflow:hidden;
+    background:#3b3d42;
+    color:white;
+    padding:76px 0 88px
+}
+.hero-code-bg
+{
+    position:absolute;
+    inset:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    overflow:hidden;
+    opacity:.2;
+    filter:blur(2px);
+    pointer-events:none
+}
+.hero-code-bg pre
+{
+    margin:0;
+    padding:12px 4%;
+    color:#3eaa91;
+    font:13px/1.6 monospace;
+    white-space:pre
+}
+.hero-grid
+{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:55px;
+    align-items:center
+}
+.tag
+{
+    display:inline-block;
+    border:1px solid #66809c;
+    border-radius:30px;
+    padding:5px 13px;
+    color:#dcecff;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase
+}
+h1
+{
+    font-size:48px;
+    line-height:1.12;
+    margin:17px 0 14px;
+    letter-spacing:-1.5px;
+    color:#ff3214
+}
+.hero p
+{
+    max-width:650px;
+    color:#fff;
+    font-size:18px;
+    margin:0 0 23px
+}
+.btn
+{
+    display:inline-block;
+    text-decoration:none;
+    border-radius:6px;
+    padding:11px 20px;
+    font-size:14px;
+    font-weight:700;
+    background:var(--orange);
+    color:white
+}
+.course-card
+{
+    min-height:252px;
+    display:grid;
+    place-items:start center;
+    padding:25px 20px;
+    border:12px solid #fff;
+    border-radius:21px;
+    background:
+        radial-gradient(ellipse at 30% 65%,#064e3b88,transparent 55%),
+        linear-gradient(135deg,#07130f,#020503 72%);
+    box-shadow:0 12px 28px #15151555;
+    text-align:center
+}
+.course-card-content
+{
+    position:relative
+}
+.course-badge
+{
+    display:inline-block;
+    margin:0 0 5px;
+    padding:5px 17px;
+    border-radius:30px;
+    background:#ff160c;
+    color:#fff;
+    font-size:18px;
+    font-weight:800
+}
+.course-card p
+{
+    margin:4px 0;
+    color:#fff;
+    font-size:16px;
+    font-weight:700
+}
+.stats
+{
+    margin:32px auto 0;
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px
+}
+.stat
+{
+    min-height:172px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+    padding:35px 12px 20px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#fff
+}
+.stat-icon
+{
+    width:42px;
+    height:42px;
+    margin-bottom:25px;
+    fill:none;
+    stroke:#ff3214;
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round
+}
+.stat strong
+{
+    display:block;
+    color:#111;
+    font-size:16px
+}
+.stat span
+{
+    font-size:12px;
+    color:var(--muted)
+}
+section
+{
+    padding:66px 0
+}
+.eyebrow
+{
+    color:var(--blue);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    font-weight:800
+}
+h2
+{
+    color:var(--navy);
+    font-size:32px;
+    line-height:1.2;
+    margin:7px 0 12px;
+    letter-spacing:-.6px
+}
+.lead
+{
+    color:var(--muted);
+    max-width:780px;
+    margin:0
+}
+.about
+{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:55px;
+    align-items:center
+}
+.about-box
+{
+    background:#eef5fc;
+    border-radius:12px;
+    min-height:245px;
+    display:grid;
+    place-items:center;
+    color:var(--blue);
+    font-weight:800;
+    font-size:100px
+}
+.benefits
+{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:22px
+}
+.benefits div
+{
+    font-size:13px;
+    color:#465467
+}
+.benefits span
+{
+    color:#16845a;
+    font-weight:bold;
+    margin-right:8px
+}
+.curriculum
+{
+    background:var(--pale)
+}
+.section-head
+{
+    text-align:center;
+    margin-bottom:30px
+}
+.section-head .lead
+{
+    margin:0 auto
+}
+.module-grid
+{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px
+}
+.module-card
+{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:19px 20px;
+    display:flex;
+    gap:14px
+}
+.module-number
+{
+    flex:0 0 34px;
+    height:34px;
+    background:#eaf3fc;
+    color:var(--blue);
+    border-radius:6px;
+    display:grid;
+    place-items:center;
+    font-size:11px;
+    font-weight:800
+}
+.module-content h3
+{
+    font-size:16px;
+    color:var(--navy);
+    margin:2px 0 9px;
+    line-height:1.35
+}
+.topic-list,.subtopics
+{
+    margin:0;
+    padding-left:18px;
+    font-size:12.5px;
+    color:#566274
+}
+.topic-list li
+{
+    padding:2px 0
+}
+.topic-item::marker
+{
+    color:var(--orange)
+}
+.subtopics
+{
+    font-size:12px;
+    color:#7b8492
+}
+.projects
+{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:28px
+}
+.project-card
+{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:20px;
+    background:white
+}
+.project-index
+{
+    font-size:10px;
+    letter-spacing:1px;
+    color:var(--orange);
+    font-weight:800
+}
+.project-card h3
+{
+    font-size:15px;
+    line-height:1.4;
+    color:var(--navy);
+    margin:8px 0
+}
+.project-card p
+{
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0
+}
+.cta
+{
+    background:var(--navy);
+    color:white;
+    border-radius:10px;
+    padding:32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px
+}
+.cta h2
+{
+    color:white;
+    margin:0 0 5px;
+    font-size:26px
+}
+.cta p
+{
+    margin:0;
+    color:#cbd8e6;
+    font-size:13px
+}
+footer
+{
+    background:#0b1b30;
+    color:#b9c8d8;
+    padding:24px 0;
+    font-size:12px
+}
+footer .container
+{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    text-align:center
+}
+.social-icons
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin:14px 0 8px
+}
+.social-icon
+{
+    display:block;
+    width:22px;
+    height:22px;
+    fill:#f32b0b
+}
+.social-icon .icon-cutout
+{
+    fill:#0b1b30
+}
+@media(max-width:800px)
+{
+    .hero-grid,.about
+    {
+        grid-template-columns:1fr
+    }
+    .course-card
+    {
+        max-width:450px
+    }
+    .stats
+    {
+        grid-template-columns:repeat(2,1fr)
+    }
+    .module-grid
+    {
+        grid-template-columns:1fr
+    }
+    .projects
+    {
+        grid-template-columns:1fr 1fr
+    }
+}
+@media(max-width:560px)
+{
+    .hero-code-bg
+    {
+        grid-template-columns:1fr
+    }
+    .hero-code-bg pre:nth-child(2)
+    {
+        display:none
+    }
+    .stats
+    {
+        grid-template-columns:1fr
+    }
+    .top .container
+    {
+        justify-content:center
+    }
+    .top .container span:last-child
+    {
+        display:none
+    }
+}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<div class="hero-code-bg" aria-hidden="true">
+<pre>class PythonCourse:
+    def __init__(self):
+        self.topics = ["Python", "SQL", "Projects"]
+    def learn(self):
+        return "Build real-world skills"</pre>
+<pre>def solve_problem(data):
+    results = analyze(data)
+    for item in results:
+        print(item)
+    return results</pre>
+</div>
+<div class="container hero-grid">
+<div class="hero-copy">
+<h1>Python Programming</h1>
+<p>Learn Python programming concepts, work with databases, explore advanced Python topics, and gain hands-on exposure through real-time tasks.</p>
+</div>
+<div class="course-card">
+<div class="course-card-content">
+<span class="course-badge">PYTHON PROGRAMMING</span>
+<p>1. Python, Data Structures &amp; SQL</p>
+<p>2. Projects and Practical Learning</p>
+</div>
+</div>
+</div>
+</section>
+<div class="container"><div class="stats">
+<div class="stat">
+<svg class="stat-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="25" rx="3"></rect><path d="M5 38h38l-3 4H8z"></path></svg>
+<strong>Learning Mode</strong><span>Online</span>
+</div>
+<div class="stat">
+<svg class="stat-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="20" y="5" width="8" height="8" rx="2"></rect><rect x="5" y="35" width="8" height="8" rx="2"></rect><rect x="20" y="35" width="8" height="8" rx="2"></rect><rect x="35" y="35" width="8" height="8" rx="2"></rect><path d="M24 13v9M9 35v-8h30v8M24 22v13"></path></svg>
+<strong>Real-Time Projects</strong><span>Practical Hands-On Learning</span>
+</div>
+<div class="stat">
+<svg class="stat-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="16" r="7"></circle><circle cx="34" cy="18" r="6"></circle><path d="M5 39c0-7 5-12 13-12s13 5 13 12v2H5zM30 29c7-2 13 2 14 8l1 4H34"></path></svg>
+<strong>Expert Mentorship</strong><span>Guided Learning</span>
+</div>
+<div class="stat">
+<svg class="stat-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="14" width="38" height="27" rx="3"></rect><path d="M18 14v-5h12v5M5 23l19 9 19-9M20 31h8"></path></svg>
+<strong>Career Support</strong><span>Skill Development</span>
+</div>
+</div></div>
+<section id="about"><div class="container about">
+<div><span class="eyebrow">About the Course</span><h2>Python Programming Course</h2>
+<p class="lead">The SkillDzire Python Programming course covers Python fundamentals, programming concepts, data structures, object-oriented programming, SQL integration and advanced Python topics. It also includes hands-on real-time exposure tasks.</p>
+<div class="benefits"><div><span>✓</span>Python programming concepts</div><div><span>✓</span>Hands-on real-time tasks</div><div><span>✓</span>SQL for Python</div><div><span>✓</span>Practical project exposure</div></div></div>
+<div class="about-box">Python</div>
+</div></section>
+<section class="curriculum" id="curriculum"><div class="container">
+<h2 style="text-align:center;">Curriculum</h2></div>
+<div class="module-grid"><article class="module-card">
+        <div class="module-number">01</div>
+        <div class="module-content">
+          <h3>Introduction to Python &amp; Setup</h3>
+          <ul class="topic-list"><li class="topic-item"><span>What is Python? Features &amp; Uses</span></li><li class="topic-item"><span>Installing Python (Windows/Linux/Mac)</span></li><li class="topic-item"><span>IDEs</span><ul class="subtopics"><li>IDLE, Jupyter, VS Code, Google Colab</li></ul></li><li class="topic-item"><span>Running Scripts</span><ul class="subtopics"><li>Terminal vs Notebook</li></ul></li><li class="topic-item"><span>Python Syntax &amp; Indentation Rules</span></li><li class="topic-item"><span>Basic Input/Output</span></li><li class="topic-item"><span>Comments</span><ul class="subtopics"><li>Single-line, Multi-line</li></ul></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">02</div>
+        <div class="module-content">
+          <h3>Variables, Data Types &amp; Operators</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Variable Declaration &amp; Naming Rules</span></li><li class="topic-item"><span>Dynamic Typing</span></li><li class="topic-item"><span>Data Types</span><ul class="subtopics"><li>int, float, str, bool, None</li><li>Type Conversion &amp; Casting</li></ul></li><li class="topic-item"><span>Operators:</span><ul class="subtopics"><li>Arithmetic</li><li>Assignment</li><li>Comparison</li><li>Logical</li><li>Bitwise</li><li>Identity &amp; Membership</li></ul></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">03</div>
+        <div class="module-content">
+          <h3>Control Structures (Conditions &amp; Loops)</h3>
+          <ul class="topic-list"><li class="topic-item"><span>if, elif, else</span></li><li class="topic-item"><span>Nested Conditions</span></li><li class="topic-item"><span>for loop and while loop</span></li><li class="topic-item"><span>Loop Control: break, continue, pass</span></li><li class="topic-item"><span>Pattern Printing Exercises</span></li><li class="topic-item"><span>Range-based Iteration</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">04</div>
+        <div class="module-content">
+          <h3>Functions &amp; Scope</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Defining and Calling Functions</span></li><li class="topic-item"><span>Parameters, Return Values</span></li><li class="topic-item"><span>*args and **kwargs</span></li><li class="topic-item"><span>Lambda Functions</span></li><li class="topic-item"><span>Variable Scope: Global vs Local</span></li><li class="topic-item"><span>Recursion Basics</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">05</div>
+        <div class="module-content">
+          <h3>Python Data Structures</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Lists</span><ul class="subtopics"><li>Indexing, Slicing, Mutability</li></ul></li><li class="topic-item"><span>Methods</span><ul class="subtopics"><li>append, remove, sort, etc.</li></ul></li><li class="topic-item"><span>Tuples</span><ul class="subtopics"><li>Immutable Sequences</li></ul></li><li class="topic-item"><span>Sets</span><ul class="subtopics"><li>Unique Elements</li></ul></li><li class="topic-item"><span>Dictionaries</span><ul class="subtopics"><li>Key-value pairs</li><li>CRUD operations</li><li>Iterating over dicts</li></ul></li><li class="topic-item"><span>Comprehensions</span><ul class="subtopics"><li>List, Dict, Set</li></ul></li><li class="topic-item"><span>Nested Structures</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">06</div>
+        <div class="module-content">
+          <h3>Strings &amp; String Operations</h3>
+          <ul class="topic-list"><li class="topic-item"><span>String Creation, Indexing, Slicing</span></li><li class="topic-item"><span>Built-in Methods</span><ul class="subtopics"><li>upper(), lower(), find(), replace(), etc.</li></ul></li><li class="topic-item"><span>Formatting</span><ul class="subtopics"><li>format(), f-strings</li></ul></li><li class="topic-item"><span>String validation</span><ul class="subtopics"><li>isdigit(), isalpha()</li></ul></li><li class="topic-item"><span>Regular Expressions</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">07</div>
+        <div class="module-content">
+          <h3>File Handling &amp; Exception Management</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Reading/Writing Text Files (open, read, write, with)</span></li><li class="topic-item"><span>Working with .csv files</span></li><li class="topic-item"><span>Try, except, finally, else</span></li><li class="topic-item"><span>Raise keyword</span></li><li class="topic-item"><span>Custom Exceptions</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">08</div>
+        <div class="module-content">
+          <h3>Object-Oriented Programming in Python</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Class &amp; Object</span></li><li class="topic-item"><span>__init__ Constructor</span></li><li class="topic-item"><span>Instance vs Class Variables</span></li><li class="topic-item"><span>Methods, self keyword</span></li><li class="topic-item"><span>Inheritance, Polymorphism</span></li><li class="topic-item"><span>Encapsulation &amp; Private Attributes</span></li><li class="topic-item"><span>super() keyword</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">09</div>
+        <div class="module-content">
+          <h3>SQL For Python</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Introduction to Databases &amp; SQL</span></li><li class="topic-item"><span>Setting Up SQL with Python</span></li><li class="topic-item"><span>SQLite with Python</span></li><li class="topic-item"><span>MySQL with Python</span></li><li class="topic-item"><span>Advanced SQL Handling</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">10</div>
+        <div class="module-content">
+          <h3>Modules &amp; Packages</h3>
+          <ul class="topic-list"><li class="topic-item"><span>import, from ... import</span></li><li class="topic-item"><span>Writing and using custom modules</span></li><li class="topic-item"><span>Understanding __init__.py and package structure</span></li><li class="topic-item"><span>Using pip to install external packages</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">11</div>
+        <div class="module-content">
+          <h3>Iterators &amp; Generators</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Iterator Basics</span></li><li class="topic-item"><span>Creating Custom Iterators</span></li><li class="topic-item"><span>Generator Functions with yield</span></li><li class="topic-item"><span>Generator Expressions</span></li><li class="topic-item"><span>Use Cases of Generators</span></li></ul>
+        </div>
+      </article>
+
+      <article class="module-card">
+        <div class="module-number">12</div>
+        <div class="module-content">
+          <h3>Decorators in Python</h3>
+          <ul class="topic-list"><li class="topic-item"><span>Functions as First-Class Objects</span></li><li class="topic-item"><span>Nested Functions &amp; Closures</span></li><li class="topic-item"><span>Writing Your Own Decorator</span></li><li class="topic-item"><span>Using @decorator Syntax</span></li><li class="topic-item"><span>Built-in Decorators</span></li></ul>
+        </div>
+      </article></div>
+</div></section>
+<section id="projects"><div class="container" style="text-align:center;">
+<span class="eyebrow">Practical Learning</span><h2>Projects You Will Work On</h2>
+<p class="lead">Hands-On Real-Time Exposure Tasks from the Python Programming curriculum.</p>
+<div class="projects"><article class="project-card">
+        <span class="project-index">PROJECT 01</span>
+        <h3>Student Performance Tracking and Predictive Analytics System</h3>
+        <p>A platform for monitoring academic progress, analyzing trends, and providing data-driven insights for personalized learning.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 02</span>
+        <h3>Interactive Sales Data Analysis and Visualization Platform for Business Intelligence</h3>
+        <p>A dynamic dashboard that enables real-time sales tracking, trend visualization, and strategic decision-making support.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 03</span>
+        <h3>Advanced Employee Management and Payroll Automation System</h3>
+        <p>An integrated HR solution for workforce management, attendance tracking, and automated salary processing.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 04</span>
+        <h3>Real-Time Weather Monitoring and Forecasting Dashboard with API Integration</h3>
+        <p>A web-based application that collects live weather data through APIs and provides predictive insights with visualization tools.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 05</span>
+        <h3>SQL-Driven Library Management and Digital Cataloging System</h3>
+        <p>A database-integrated platform to manage book inventories, student memberships, and automated issuing/return processes.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 06</span>
+        <h3>Loan Approval Prediction and Risk Assessment Using Machine Learning Models</h3>
+        <p>An AI-powered solution for predicting loan eligibility and minimizing default risks through data-driven insights.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 07</span>
+        <h3>Intelligent Email Spam Detection System Using Machine Learning Algorithms</h3>
+        <p>A classification-based model that identifies and filters spam emails to enhance security and communication efficiency.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 08</span>
+        <h3>Financial Data Preprocessing: Text Cleaning and Sentiment Labeling for Market Insights</h3>
+        <p>A text-mining project that cleans financial documents, labels sentiments, and extracts signals for better investment decisions.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 09</span>
+        <h3>Behavioral Data Analysis Through Sentiment and Emotion Detection Models</h3>
+        <p>A system that leverages NLP and AI to identify user emotions and behavioral patterns for improved user experience.</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-index">PROJECT 10</span>
+        <h3>Cyberbullying Detection on Social Media Using NLP and Machine Learning-Based Text Classification</h3>
+        <p>An intelligent system designed to detect harmful content, analyze behavioral patterns, and promote safe digital communication.</p>
+      </article></div>
+</div>
+</main>
+<footer><div class="container"><span>© 2025 SkillDzire. All rights reserved.</span>
+  <span>Python Programming Course</span></div>
+ <div class="social-icons" aria-label="Social media icons">
+  <svg class="social-icon facebook-icon" viewBox="0 0 24 24" role="img" aria-label="Facebook">
+   <circle cx="12" cy="12" r="11"></circle>
+   <path class="icon-cutout" d="M13.5 20v-7h2.35l.35-2.72H13.5V8.54c0-.79.22-1.33 1.36-1.33h1.45V4.78c-.25-.03-1.11-.11-2.11-.11-2.09 0-3.52 1.27-3.52 3.61v2.01H8.32V13h2.36v7z"></path>
+  </svg>
+  <svg class="social-icon linkedin-icon" viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
+   <rect x="1" y="1" width="22" height="22" rx="3"></rect>
+   <path class="icon-cutout" d="M6 9h3v9H6zm1.5-4A1.75 1.75 0 1 0 7.5 8.5 1.75 1.75 0 0 0 7.5 5M11 9h2.88v1.23h.04A3.16 3.16 0 0 1 16.76 8.7C19.85 8.7 20 10.74 20 13.4V18h-3v-4.08c0-.97-.02-2.21-1.35-2.21-1.36 0-1.57 1.06-1.57 2.14V18H11z"></path>
+  </svg>
+  <svg class="social-icon youtube-icon" viewBox="0 0 24 24" role="img" aria-label="YouTube">
+   <rect x="1" y="4" width="22" height="16" rx="5"></rect>
+   <path class="icon-cutout" d="m10 8 6 4-6 4z"></path>
+  </svg>
+ </div>
+ <p style="text-align:center;margin-top:10px;">
+  <a href="#">Pravicy Policy</a>
+  "|"
+  <a href="#">Terms & Conditions</a>
+ </p></footer>
+</body></html>
